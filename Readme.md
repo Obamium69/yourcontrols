@@ -4,6 +4,44 @@
 
 # **Shared Cockpit for Microsoft Flight Simulator 2020**
 
+## ⚠️ AI-Generated Fork Disclaimer
+
+**This fork contains AI-generated code.**
+
+I don't know rust very well but I wanted to try to get it running under Linux (at least via Wine/Proton). So please forgive me for using LLM's
+
+
+If you prefer human-written code, use the [original project](https://github.com/Sequal32/yourcontrols).
+
+## Changes
+
+This fork adds **egui** as an alternative UI backend to run YourControls on **Linux with WINE/Proton**.
+
+### What's different?
+
+- **egui native GUI** - Works under WINE/Proton (WebView2 doesn't)
+- ⚠️ **AI-generated** - egui backend created with massive AI assistance
+
+### Building
+
+**Windows (egui):**
+```powershell
+cargo build --release --no-default-features --features egui-ui-full
+```
+
+**Original WebView:**
+```powershell
+cargo build --release --features webview-ui
+```
+
+### Running on Linux
+
+```bash
+protontricks -c 'wine YourControls.exe' 1250410
+```
+
+---
+
 ## Click the image below for information about the mod, and how to install!
 
 &nbsp;

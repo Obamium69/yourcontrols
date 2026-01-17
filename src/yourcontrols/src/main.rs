@@ -1,7 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 #![allow(non_snake_case)]
 
-mod app;
 mod audio;
 mod clientmanager;
 mod corrector;
@@ -9,17 +8,18 @@ mod definitions;
 mod simconfig;
 mod sync;
 mod syncdefs;
+mod ui;
 mod update;
 mod util;
 mod varreader;
 
-use app::{App, AppMessage, ConnectionMethod};
 use audio::AudioManager;
 use clientmanager::ClientManager;
 use definitions::{Definitions, ProgramAction, SyncPermission};
 use log::{error, info, warn};
 use simconfig::Config;
 use simconnect::{DispatchResult, SimConnector};
+use ui::{ActiveBackend, AppMessage, ConnectionMethod, UIBackend};
 
 use spin_sleep::sleep;
 use std::{
@@ -180,7 +180,7 @@ fn main() {
     // Client stopped, need to stop transfer client
     let mut should_set_none_client = false;
 
-    let app_interface = App::setup(format!("YourControls v{}", updater.get_version()));
+    let app_interface = ActiveBackend::setup(format!("YourControls v{}", updater.get_version()));
 
     // Transfer
     let mut transfer_client: Option<Box<dyn TransferClient>> = None;

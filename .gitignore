@@ -15,3 +15,15 @@ scripts/*
 libclang.dll
 node_modules
 config.json
+# Temporary files
+.tmp/
+
+# Build artifacts
+*.exe
+*.pdb
+*.d
+target/
+
+# IDE
+.vscode/
+.idea/

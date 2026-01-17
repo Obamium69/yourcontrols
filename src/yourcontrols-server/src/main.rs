@@ -26,9 +26,7 @@ pub fn main() {
     let servers = Arc::new(Mutex::new(Servers::new()));
     let servers_clone = servers.clone();
 
-    info!(
-        "YourControls server started!",
-    );
+    info!("YourControls server started!",);
 
     thread::spawn(|| {
         run_hoster(

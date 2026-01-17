@@ -30,20 +30,29 @@ semver = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_yaml = "0.8"
-simconnect = "0.3.2"
+simconnect = { version = "0.3.2", optional = true }
 simplelog = "0.12"
 spin_sleep = "1.1"
 tungstenite = "0.23"
 util = "0.1"
-web-view = "0.7"
 zip = "2.1"
+
+# UI backends
+web-view = { version = "0.7", optional = true }
+eframe = { version = "0.29", optional = true, default-features = false, features = ["glow"] }
+egui = { version = "0.29", optional = true }
+winit = { version = "0.30", optional = true }
 
 yourcontrols-net = { path = "../yourcontrols-net" }
 yourcontrols-types = { path = "../yourcontrols-types" }
 
 [features]
+default = ["webview-ui", "simconnect"]
 skip_sim_connect = []
 edge = ["web-view/edge"]
+webview-ui = ["web-view", "simconnect"]
+egui-ui = ["eframe", "egui", "winit"]
+egui-ui-full = ["egui-ui", "simconnect"]
 
 [build-dependencies]
 winres = "0.1"
